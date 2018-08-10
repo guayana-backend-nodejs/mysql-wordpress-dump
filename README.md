@@ -34,7 +34,7 @@ module.exports = {
   },
   backups: {
     MAX_FILES: 10,
-    TYPE: 'database',
+    TYPE: 'save',
     SRC: {
       production: '/home/temp',
       develop: '/home/dev/temp'
