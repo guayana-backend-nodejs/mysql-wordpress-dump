@@ -5,7 +5,7 @@
   "scripts": {
     "test": "eslint ."
   },
-  "author": "Team LCC OpenTech",
+  "author": "Team LCC OpenTech (https://lccopen.tech/)",
   "license": "MIT",
   "dependencies": {
     "async": "2.6.1",
