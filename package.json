@@ -6,7 +6,16 @@
     "test": "eslint ."
   },
   "author": "Team LCC OpenTech <info@lccopen.tech> (https://lccopen.tech/)",
+  "homepage": "https://lccopen.tech/",
   "license": "MIT",
+  "keywords": [
+    "wordpress",
+    "mysql",
+    "backup",
+    "Node.js",
+    "DigitalOcean",
+    "LCC Opentech"
+  ],
   "dependencies": {
     "async": "2.6.1",
     "chokidar": "2.0.4",

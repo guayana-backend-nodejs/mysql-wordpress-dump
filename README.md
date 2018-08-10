@@ -54,6 +54,7 @@ module.exports = {
 ### Index application
 
 ```js
+const config = require('./config')
 const DumpClass = require('mysql-wordpress-dump').dump
 const dump = new DumpClass(config)
 
@@ -64,7 +65,7 @@ process.on('exit', () => {
 })
 ```
 
-## How Do I install or create or edit my own cron jobs?
+## How do I install, create or edit my own cron job?
 
 To edit or create your own crontab file, type the following command at the UNIX / Linux shell prompt:
 
@@ -75,7 +76,7 @@ $ crontab -e
 
 ## Do I have to restart cron after changing the crontable file?
 
-No. Cron will examine the modification time on all crontabs and reload those which have changed. Thus cron need not be restarted whenever a crontab file is modified.
+No. Cron will examine the modification time on all crontabs and reload those which have changed. Cron does not need to be restarted whenever a crontab file is modified.
 
 ## Syntax of crontab (field description)
 
