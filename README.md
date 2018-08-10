@@ -129,21 +129,42 @@ Enter the following command in the application folder:
 $ pwd
 ```
 
-### Add Backup Type
+### Add Backup Type (MySQL Or Wordpress)
 
-Add `mysql` OR `wordpress` after the app location. For Example:
+If you work with environment variables, you should only set the value `BACKUP_ENV` to `mysql` OR `wordpress`.
+
+This value is required in the command line if you are not working with environment variables. Add `mysql` OR `wordpress` after the app location.
+
+For Example:
 
 ```
 1 2 3 4 5 /path/to/node /path/to/app/file.js mysql
 ```
 
-### Add Development environment (Only for development tests)
+### Add Execution environment
 
-If you want to perform tests outside of the production environment you need to add `develop` after the file location.
-Omit this value if the script runs on the production server. For Example:
+If you work with environment variables, you should only set the value `NODE_ENV` to `develop` OR `production`.
+
+By default the value is `production`, so you can skip entering this value if you work from a production server.
+
+**IMPORTANT:** If you work from a *development server and you are not working with environment variables*, this value is necessary in the command line, otherwise you will be working with the `production` values. Add `develop` after the backup type.
+
+#### Develop Example (Without NODE_ENV):
 
 ```
 1 2 3 4 5 /path/to/node /path/to/app/file.js mysql develop
+```
+
+#### Develop Example (With NODE_ENV = `develop`):
+
+```
+1 2 3 4 5 /path/to/node /path/to/app/file.js mysql
+```
+
+#### Production Example (With or without NODE_ENV = `production`):
+
+```
+1 2 3 4 5 /path/to/node /path/to/app/file.js mysql
 ```
 
 ### Add output file for application logs (Optional)
@@ -158,6 +179,12 @@ If you want to keep a file for the executions of the application you must add th
 
 ```
 * * * * * ${which node} ${pwd-application}/${filename}.js ${backup-type} ${env} >> ${pwd-logs-location}/${log-filename}.log 2>&1
+```
+
+### Full Example Without Crontab
+
+```
+node ${filename}.js ${backup-type} ${env}
 ```
 
 ### More info

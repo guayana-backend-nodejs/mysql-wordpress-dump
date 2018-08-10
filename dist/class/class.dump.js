@@ -139,7 +139,7 @@ module.exports = class {
   verifyParams() {
     if ((ENV !== 'develop' && ENV !== 'production') ||
         (BACKUP !== 'wordpress' && BACKUP !== 'mysql')) {
-      const CAT = `BACKUP=${BACKUP} and ENV=${ENV}`
+      const CAT = `BACKUP_ENV=${BACKUP} and NODE_ENV=${ENV}`
       throw new Error(`Please check that your parameters are valid. ${CAT}`)
     }
     return true
