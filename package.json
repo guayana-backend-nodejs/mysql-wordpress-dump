@@ -17,6 +17,10 @@
     "DigitalOcean",
     "LCC Opentech"
   ],
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/guayana-backend-nodejs/mysql-wordpress-dump"
+  }
   "dependencies": {
     "chokidar": "2.0.4",
     "eslint": "5.2.0",
