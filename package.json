@@ -1,6 +1,6 @@
 {
   "name": "mysql-wordpress-dump",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Ideal for backing the database information and wp-content of your wordpress.",
   "main": "./dist/index.js",
   "scripts": {
