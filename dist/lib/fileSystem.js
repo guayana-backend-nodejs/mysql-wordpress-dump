@@ -17,24 +17,31 @@ module.exports = {
     fs.writeFile(dir, '', { overwrite: false }, cb)
   },
   readdir: (dir, ext, cb) => {
-    fs.readdir(dir, (err, files) => {
-      if (err) { cb(err) } else {
-        const response = {}
-        let extCount = 0
-        let filesExt = []
-        for(let i in files) {
-          if(path.extname(files[i]) === `.${ext}`) {
-            extCount = extCount + 1
-            filesExt.push(files[i])
-          }
+    try {
+      const response = {}
+      let extCount = 0
+      let filesExt = []
+
+      let files = fs.readdirSync(dir)
+      files.sort(function(fileA, fileB) {
+        return fs.statSync(`${dir}/${fileA}`).mtime.getTime() - fs.statSync(`${dir}/${fileB}`).mtime.getTime()
+      })
+
+      for(let i in files) {
+        if(path.extname(files[i]) === `.${ext}`) {
+          extCount = extCount + 1
+          filesExt.push(files[i])
         }
-        response['files'] = filesExt
-        response['allFilesCount'] = files.length
-        response['fileType'] = ext
-        response['fileTypeCount'] = extCount
-        cb(null, response)
       }
-    })
+
+      response['files'] = filesExt
+      response['allFilesCount'] = files.length
+      response['fileType'] = ext
+      response['fileTypeCount'] = extCount
+      cb(null, response)
+    } catch (e) {
+      cb(e)
+    }
   },
   replace: (file, replacement, cb) => {
     fs.readFile(replacement, (err, contents) => {
