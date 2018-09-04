@@ -22,7 +22,6 @@
     "url": "https://github.com/guayana-backend-nodejs/mysql-wordpress-dump"
   },
   "dependencies": {
-    "chokidar": "2.0.4",
     "eslint": "5.2.0",
     "fs": "0.0.1-security",
     "joi": "13.5.2",
