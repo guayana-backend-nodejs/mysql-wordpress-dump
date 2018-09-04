@@ -25,11 +25,12 @@ let config = {}
 
 module.exports = class {
   constructor(jsConfig) {
+    this.config = jsConfig || {}
     config = jsConfig || {}
   }
   /* Start and Validate Config File */
   startDump() {
-    Joi.validate(config, ValidatorSchema['config'])
+    Joi.validate(this.config, ValidatorSchema['config'])
       .then(response => {
         const wp_prod_keys = _.keys(response['wordpress']['production'])
         const wp_dev_keys = _.keys(response['wordpress']['develop'])
@@ -46,7 +47,7 @@ module.exports = class {
               .then(() => {
                 if (verifyParams()) {
                   log.info('\n')
-                  log.info(config['log']['messages'][`${BACKUP}-start`])
+                  log.info(this.config['log']['messages'][`${BACKUP}-start`])
                   /* Backups Folders Verification */
                   verifyBackupsFolders()
                   /* mysqp or wp-content backups */
